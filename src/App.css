@@ -1,0 +1,46 @@
+.header-container {
+  position: relative;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.521), rgba(0, 0, 0, 0.822)),
+    url("../src/assets/img/Header.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.imagen-principal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar {
+  background-color: #151515;
+  color: white;
+  font-size: 15px;
+}
+
+.navbar button {
+  font-size: 12px;
+}
+
+#btnAnadir {
+  transition: transform 0.3s ease;
+  background-color: #151515;
+  color: white !important;
+}
+
+#btnAnadir:hover {
+  transform: scale(1.1);
+  background-color: orange !important;
+}
+
+#btnVerMas {
+  transition: transform 0.3s ease;
+}
+
+#btnVerMas:hover {
+  transform: scale(1.1);
+}
