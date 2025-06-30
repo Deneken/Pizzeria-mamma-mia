@@ -5,12 +5,16 @@ import "./App.css";
 import NavbarF from "./components/NavbarF";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
   return (
     <>
       <NavbarF />
-      <Home />
+      {/* <Register /> */}
+      <Login />
+      {/* <Home /> */}
       <Footer />
     </>
   );
