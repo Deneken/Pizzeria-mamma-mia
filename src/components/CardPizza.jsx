@@ -13,7 +13,13 @@ const Card = ({ name, price, ingredientes, img }) => {
           <p className="card-text mb-1">
             <strong>Ingredientes:</strong>
           </p>
-          <p className="card-text text-muted">🍕 {ingredientes}</p>
+
+          {/* Aquí mapeamos los ingredientes */}
+          <ul className="list-unstyled text-muted">
+            {ingredientes.map((ing, i) => (
+              <li key={i}>🍕 {ing}</li>
+            ))}
+          </ul>
 
           <p className="card-text mt-3">
             <strong>Precio: ${price}</strong>

@@ -7,14 +7,18 @@ import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Card from "./components/Card";
+import Pizza from "./components/Pizza";
 
 function App() {
   return (
     <>
       <NavbarF />
       {/* <Register /> */}
-      <Login />
+      {/* <Login /> */}
       {/* <Home /> */}
+      <Pizza />
+      {/* <Card /> */}
       <Footer />
     </>
   );
