@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { pizzaCart } from "./pizzas"; // Asegúrate de que el path sea correcto
+import { pizzaCart } from "../components/pizzas";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Cart() {
+function Card() {
   const [cart, setCart] = useState(pizzaCart);
 
-  // Aumentar cantidad
   const aumentar = (id) => {
     const actualizado = cart.map((pizza) =>
       pizza.id === id ? { ...pizza, cantidad: pizza.cantidad + 1 } : pizza
@@ -13,17 +12,15 @@ function Cart() {
     setCart(actualizado);
   };
 
-  // Disminuir cantidad o eliminar
   const disminuir = (id) => {
     const actualizado = cart
       .map((pizza) =>
         pizza.id === id ? { ...pizza, cantidad: pizza.cantidad - 1 } : pizza
       )
-      .filter((pizza) => pizza.cantidad > 0); // elimina si cantidad es 0
+      .filter((pizza) => pizza.cantidad > 0);
     setCart(actualizado);
   };
 
-  // Calcular total
   const total = cart.reduce(
     (acc, pizza) => acc + pizza.precio * pizza.cantidad,
     0
@@ -71,4 +68,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default Card;

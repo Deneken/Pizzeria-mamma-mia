@@ -14,7 +14,6 @@ const Card = ({ name, price, ingredientes, img }) => {
             <strong>Ingredientes:</strong>
           </p>
 
-          {/* Aquí mapeamos los ingredientes */}
           <ul className="list-unstyled text-muted">
             {ingredientes.map((ing, i) => (
               <li key={i}>🍕 {ing}</li>

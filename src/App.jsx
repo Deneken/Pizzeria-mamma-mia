@@ -1,26 +1,33 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+
 import NavbarF from "./components/NavbarF";
-import Home from "./components/Home";
 import Footer from "./components/Footer";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Card from "./components/Card";
-import Pizza from "./components/Pizza";
+
+import Home from "./pages/Home";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Card from "./pages/Card";
+import Pizza from "./pages/Pizza";
+import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <NavbarF />
-      {/* <Register /> */}
-      {/* <Login /> */}
-      {/* <Home /> */}
-      <Pizza />
-      {/* <Card /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/card" element={<Card />} />
+        <Route path="/pizza/p001" element={<Pizza />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 
