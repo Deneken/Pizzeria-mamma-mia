@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CardContext";
 
 function NavbarF() {
-  const total = 25000;
+  const { getTotal } = useCart();
   const token = false;
 
   return (
@@ -59,7 +60,7 @@ function NavbarF() {
 
         <div className="d-none d-md-block">
           <Link to="/cart" className="btn btn-outline-secondary text-white">
-            🛒 Total: ${total.toLocaleString("es-CL")}
+            🛒 Total: ${getTotal().toLocaleString("es-CL")}
           </Link>
         </div>
       </div>
