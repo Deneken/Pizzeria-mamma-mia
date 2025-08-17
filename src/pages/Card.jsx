@@ -1,55 +1,66 @@
-import { useCart } from "../context/CardContext";
+import React from "react";
+import { Link } from "react-router-dom";
+import { useUser } from "../context/UserContext"; 
 
-
-function Card() {
-  const { cart, increase, decrease, getTotal, removeFromCart } = useCart();
+const Card = ({ id, name, price, ingredientes, img }) => {
+  const { token } = useUser();
 
   return (
-    <div className="container mt-4">
-      <h5>Detalles del pedido:</h5>
+    <div className="col-12 col-md-4 mt-4">
+      <div className="card h-100 w-100">
+        <img src={img} className="card-img-top" alt={name} />
+        <div className="card-body text-center">
+          <h5 className="card-title">Pizza {name}</h5>
 
-      {cart.map((pizza) => (
-        <div key={pizza.id} className="d-flex align-items-center mb-3">
-          <img
-            src={pizza.img}
-            alt={pizza.name}
-            width={50}
-            height={50}
-            style={{ borderRadius: 8 }}
-          />
-          <p className="mb-0 ms-2" style={{ width: 100 }}>
-            {pizza.name}
+          <hr />
+
+          <p className="card-text mb-1">
+            <strong>Ingredientes:</strong>
           </p>
-          <p className="mb-0 ms-2">${pizza.price.toLocaleString()}</p>
 
-          <div className="d-flex align-items-center ms-3">
-            <button
-              className="btn btn-outline-danger btn-sm"
-              onClick={() => decrease(pizza.id)}
+          <ul className="list-unstyled text-muted">
+            {ingredientes.map((ing, i) => (
+              <li key={i}>🍕 {ing}</li>
+            ))}
+          </ul>
+
+          <p className="card-text mt-3">
+            <strong>Precio: ${price}</strong>
+          </p>
+          <hr />
+        </div>
+
+        <div className="card-footer d-flex flex-column gap-2 bg-white border-0">
+          <div className="d-flex justify-content-around">
+            <Link
+              to={`/pizza/${id}`}
+              className="btn btn-outline-secondary text-black"
             >
-              −
-            </button>
-            <span className="mx-2">{pizza.cantidad}</span>
+              Ver más 👀
+            </Link>
+
             <button
-              className="btn btn-outline-primary btn-sm"
-              onClick={() => increase(pizza.id)}
+              id="btnAnadir"
+              type="button"
+              className="btn btn-outline-secondary text-black"
             >
-              +
-            </button>
-            <button
-              className="btn btn-outline-warning btn-sm ms-2"
-              onClick={() => removeFromCart(pizza.id)}
-            >
-              Eliminar
+              Añadir 🛒
             </button>
           </div>
-        </div>
-      ))}
 
-      <h5 className="mt-4">Total: ${getTotal().toLocaleString()}</h5>
-      <button className="btn btn-dark mt-2">Pagar</button>
+          <button
+            className="btn btn-success mt-2"
+            disabled={!token} 
+          >
+            Pagar
+          </button>
+          {!token && (
+            <p className="text-danger mt-1">Debes iniciar sesión para pagar</p>
+          )}
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Card;

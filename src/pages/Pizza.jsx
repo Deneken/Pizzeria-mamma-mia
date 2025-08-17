@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 function Pizza() {
+  const { id } = useParams();
   const [pizza, setPizza] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/pizzas/p001")
+    fetch(`http://localhost:5000/api/pizzas/${id}`)
       .then((res) => res.json())
       .then((data) => setPizza(data))
       .catch((error) => console.error("Error al cargar la pizza:", error));
-  }, []);
+  }, [id]);
 
   if (!pizza) {
     return <p className="text-center mt-5">Cargando pizza...</p>;

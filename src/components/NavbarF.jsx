@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CardContext";
+import { useUser } from "../context/UserContext";
 
 function NavbarF() {
   const { getTotal } = useCart();
-  const token = false;
+  const { token, logout } = useUser();
 
   return (
     <nav className="navbar navbar-expand-md bg-dark px-4">
@@ -35,7 +36,10 @@ function NavbarF() {
                 >
                   🔓 Profile
                 </Link>
-                <button className="btn btn-outline-secondary text-white">
+                <button
+                  onClick={logout}
+                  className="btn btn-outline-secondary text-white"
+                >
                   🔒 Logout
                 </button>
               </>
